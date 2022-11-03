@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity", "Identity\Identity.csproj", "{B464BE35-96F1-4956-A4E7-6CA27E495725}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{1BB8543F-10FF-4525-B4EE-37B645D2F39C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{C8158CDA-AD96-41D6-BD24-48BB1D3EC122}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{BDCB6FE0-AEDB-4911-886D-D53B9CE32DB8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IdentityProject", "IdentityProject", "{2DB18D6C-5DA1-4D16-A92B-B3EEC46AA29A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B464BE35-96F1-4956-A4E7-6CA27E495725}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B464BE35-96F1-4956-A4E7-6CA27E495725}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B464BE35-96F1-4956-A4E7-6CA27E495725}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B464BE35-96F1-4956-A4E7-6CA27E495725}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDCB6FE0-AEDB-4911-886D-D53B9CE32DB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDCB6FE0-AEDB-4911-886D-D53B9CE32DB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDCB6FE0-AEDB-4911-886D-D53B9CE32DB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDCB6FE0-AEDB-4911-886D-D53B9CE32DB8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B464BE35-96F1-4956-A4E7-6CA27E495725} = {2DB18D6C-5DA1-4D16-A92B-B3EEC46AA29A}
+		{BDCB6FE0-AEDB-4911-886D-D53B9CE32DB8} = {C8158CDA-AD96-41D6-BD24-48BB1D3EC122}
+		{2DB18D6C-5DA1-4D16-A92B-B3EEC46AA29A} = {1BB8543F-10FF-4525-B4EE-37B645D2F39C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2D5B82D6-DC6A-4409-9A12-640BEB5631D8}
+	EndGlobalSection
+EndGlobal
