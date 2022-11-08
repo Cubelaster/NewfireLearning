@@ -1,19 +1,8 @@
-import React, { useCallback, useMemo, useEffect } from 'react';
-import { UserManager } from 'oidc-client';
+import { OidcClientSettings, UserManager } from 'oidc-client';
+import React, { useCallback, useEffect, useMemo } from 'react';
 
 const Dashboard = () => {
-  const config = useMemo(
-    () => ({
-      authority: 'https://localhost:5001',
-      client_id: 'react',
-      redirect_uri: 'https://localhost:5005/callback',
-      response_type: 'code',
-      scope: 'openid profile testscope',
-      post_logout_redirect_uri: 'https://localhost:5005/',
-    }),
-    []
-  );
-
+  const config = useMemo(() => JSON.parse(process.env.REACT_APP_OIDCCLIENTSETTINGS!) as OidcClientSettings, []);
   const mgr = useMemo(() => new UserManager(config), [config]);
 
   const log = (...params: any[]): void => {
