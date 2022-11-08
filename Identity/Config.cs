@@ -39,17 +39,40 @@ namespace Identity
         public static IEnumerable<Client> Clients =>
             new List<Client>
             {
+                // machine to machine client
+                new Client
+                {
+                    ClientId = "Machine",
+
+                    // no interactive user, use the clientid/secret for authentication
+                    AllowedGrantTypes = GrantTypes.ClientCredentials,
+
+                    // secret for authentication
+                    ClientSecrets =
+                    {
+                        new Secret("secret".Sha256())
+                    },
+
+                    // scopes that client has access to
+                    AllowedScopes = { "testscope" }                    
+                },
+
                 // React Client
                 new Client
                 {
                     ClientId = "react",
                     ClientName = "React Client",
                     AllowedGrantTypes = GrantTypes.Code,
-                    RequireClientSecret = false,
+
+                    // secret for authentication
+                    ClientSecrets =
+                    {
+                        new Secret("secret".Sha256())
+                    },
 
                     RedirectUris =           { "https://localhost:5005/callback" },
                     PostLogoutRedirectUris = { "https://localhost:5005/" },
-                    AllowedCorsOrigins =     { "https://localhost:5005" },
+                    AllowedCorsOrigins =     { "https://localhost:5005" },                    
 
                     AllowedScopes = new List<string>
                     {
