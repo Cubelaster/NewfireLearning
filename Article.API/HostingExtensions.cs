@@ -18,15 +18,28 @@ namespace Article.API
                 {
                     options.Authority = "https://localhost:5001";
                     options.MetadataAddress = "https://localhost:5001/.well-known/openid-configuration";
-                    //options.TokenValidationParameters.ValidateAudience = false;
+                    //options.RequireHttpsMetadata = false;
+                    options.TokenValidationParameters.ValidateAudience = true;
+                    options.TokenValidationParameters.ValidAudience = "article";
+                    // it's recommended to check the type header to avoid "JWT confusion" attacks
+                    options.TokenValidationParameters.ValidTypes = new[] { "at+jwt" };
+                    //var jwtBearerSettings = builder.Configuration.GetSection(nameof(JwtBearerOptions)).Get<JwtBearerOptions>();
+                    //options = jwtBearerSettings;
                 });
 
             builder.Services.AddAuthorization(options =>
             {
-                options.AddPolicy("Test Scope", policy =>
+                options.AddPolicy("Article Manager", policy =>
                 {
                     policy.RequireAuthenticatedUser();
-                    policy.RequireClaim("scope", "testscope");
+                    policy.RequireClaim("scope", "article.write");
+                    policy.RequireClaim("scope", "article.read");
+                });
+
+                options.AddPolicy("Article Consumer", policy =>
+                {
+                    policy.RequireAuthenticatedUser();
+                    policy.RequireClaim("scope", "article.read");
                 });
             });
 
@@ -35,7 +48,7 @@ namespace Article.API
                 // this defines a CORS policy called "default"
                 options.AddPolicy("default", policy =>
                 {
-                    policy.WithOrigins("https://localhost:5005")
+                    policy.WithOrigins(builder.Configuration["ClientUrl"])
                         .AllowAnyHeader()
                         .AllowAnyMethod();
                 });

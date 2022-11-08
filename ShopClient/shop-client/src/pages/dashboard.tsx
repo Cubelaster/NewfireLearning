@@ -2,7 +2,19 @@ import { OidcClientSettings, UserManager } from 'oidc-client';
 import React, { useCallback, useEffect, useMemo } from 'react';
 
 const Dashboard = () => {
-  const config = useMemo(() => JSON.parse(process.env.REACT_APP_OIDCCLIENTSETTINGS!) as OidcClientSettings, []);
+  const config = useMemo(
+    () => ({
+      authority: 'https://localhost:5001',
+      client_id: 'react',
+      client_secret: 'secret',
+      redirect_uri: 'https://localhost:5005/callback',
+      response_type: 'code',
+      scope: 'openid profile article.read article.write',
+      post_logout_redirect_uri: 'https://localhost:5005/',
+    }),
+    []
+  );
+  // const config = useMemo(() => JSON.parse(process.env.REACT_APP_OIDCCLIENTSETTINGS!) as OidcClientSettings, []);
   const mgr = useMemo(() => new UserManager(config), [config]);
 
   const log = (...params: any[]): void => {
@@ -27,7 +39,7 @@ const Dashboard = () => {
 
   const api = useCallback((): void => {
     mgr.getUser().then((user) => {
-      const url = 'https://localhost:5002/api/Identity';
+      const url = 'https://localhost:5002/WeatherForecast';
 
       const xhr = new XMLHttpRequest();
       xhr.open('GET', url);

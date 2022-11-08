@@ -3,15 +3,15 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Article.API.Controllers
 {
-    [Authorize(Policy = "Test Scope")]
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
         {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
+            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+        };
 
         private readonly ILogger<WeatherForecastController> _logger;
 
@@ -20,6 +20,7 @@ namespace Article.API.Controllers
             _logger = logger;
         }
 
+        [Authorize(Policy = "Article Consumer")]
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {
