@@ -16,15 +16,7 @@ namespace Article.API
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
-                    options.Authority = "https://localhost:5001";
-                    options.MetadataAddress = "https://localhost:5001/.well-known/openid-configuration";
-                    //options.RequireHttpsMetadata = false;
-                    options.TokenValidationParameters.ValidateAudience = true;
-                    options.TokenValidationParameters.ValidAudience = "article";
-                    // it's recommended to check the type header to avoid "JWT confusion" attacks
-                    options.TokenValidationParameters.ValidTypes = new[] { "at+jwt" };
-                    //var jwtBearerSettings = builder.Configuration.GetSection(nameof(JwtBearerOptions)).Get<JwtBearerOptions>();
-                    //options = jwtBearerSettings;
+                    builder.Configuration.Bind(nameof(JwtBearerOptions), options);
                 });
 
             builder.Services.AddAuthorization(options =>
