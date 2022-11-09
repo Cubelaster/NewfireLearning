@@ -8,6 +8,7 @@ const Routing = () => (
   <Routes>
     <Route path='/about' element={<About />} />
     <Route path='/callback' element={<Callback />} />
+    <Route path='/dashboard' element={<Dashboard />} />
     <Route path='/' element={<Dashboard />} />
   </Routes>
 );

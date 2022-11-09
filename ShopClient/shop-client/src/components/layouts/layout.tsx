@@ -1,24 +1,41 @@
-import React from 'react';
-import { BrowserRouter as Router, Link } from 'react-router-dom';
+import { DesktopOutlined, PieChartOutlined } from '@ant-design/icons';
+import { Layout, Menu } from 'antd';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Routing from '../../routing/routing';
+import logo from '../../logo.svg';
+const { Header, Content, Footer, Sider } = Layout;
 
-const Layout = () => (
-  <Router>
-    <nav>
-      <ul>
-        <li>
-          <Link to='/'>Dashboard</Link>
-        </li>
-        <li>
-          <Link to='/callback'>Callback</Link>
-        </li>
-        <li>
-          <Link to='/about'>About</Link>
-        </li>
-      </ul>
-    </nav>
-    <Routing />
-  </Router>
-);
+const AppLayout = () => {
+  const [collapsed, setCollapsed] = useState(false);
 
-export default Layout;
+  return (
+    <Layout style={{ minHeight: '100vh' }}>
+      <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
+        <Menu theme='dark' defaultSelectedKeys={['dashboard']} mode='inline'>
+          <Menu.Item key={'logo'} icon={<img src={logo} style={{ height: '16px', width: '16px' }} alt='logo' />}>
+            <Link to='/'>The best app ever</Link>
+          </Menu.Item>
+          <Menu.Item key={'dashboard'} icon={<DesktopOutlined />}>
+            <Link to='/dashboard'>Dashboard</Link>
+          </Menu.Item>
+          <Menu.Item key={'callback'} icon={<DesktopOutlined />}>
+            <Link to='/callback'>Callback</Link>
+          </Menu.Item>
+          <Menu.Item key={'about'} icon={<DesktopOutlined />}>
+            <Link to='/about'>About</Link>
+          </Menu.Item>
+        </Menu>
+      </Sider>
+      <Layout>
+        <Header />
+        <Content style={{ margin: '10px' }}>
+          <Routing />
+        </Content>
+        <Footer style={{ textAlign: 'center' }}>Ant Design ©2022 Created by Ant UED</Footer>
+      </Layout>
+    </Layout>
+  );
+};
+
+export default AppLayout;
