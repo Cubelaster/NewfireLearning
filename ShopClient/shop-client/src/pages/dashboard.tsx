@@ -1,9 +1,14 @@
-import { OidcClientSettings, UserManager } from 'oidc-client';
-import React, { useCallback, useEffect, useMemo } from 'react';
+import { UserManager } from 'oidc-client';
+import React, { useCallback, useContext, useEffect, useMemo } from 'react';
+import AppConfigContext from '../contexts/appConfigContext';
 
 const Dashboard = () => {
-  const config = useMemo(() => JSON.parse(process.env.REACT_APP_OIDCCLIENTSETTINGS!) as OidcClientSettings, []);
-  const mgr = useMemo(() => new UserManager(config), [config]);
+  const appConfigContext = useContext(AppConfigContext);
+
+  const mgr = useMemo(
+    () => new UserManager(appConfigContext.oidcClientSettings),
+    [appConfigContext]
+  );
 
   const log = (...params: any[]): void => {
     document.getElementById('results')!.innerText = '';

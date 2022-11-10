@@ -1,13 +1,14 @@
 import React from 'react';
+import { RouterProvider } from 'react-router-dom';
 import './App.css';
-import { BrowserRouter as Router } from 'react-router-dom';
-import AppLayout from './components/layouts/layout';
+import { AppConfigContextProvider } from './contexts/appConfigContext';
+import router from './routing/router';
 
 const App = () => {
   return (
-    <Router>
-      <AppLayout />
-    </Router>
+    <AppConfigContextProvider>
+      <RouterProvider router={router} />;
+    </AppConfigContextProvider>
   );
 };
 
