@@ -1,6 +1,8 @@
 import React, { PropsWithChildren } from 'react';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
 
+// https://www.robinwieruch.de/react-router-private-routes/
+
 export interface PrivateRouteProps {
   redirectTo: string;
   forceAllow: boolean;
