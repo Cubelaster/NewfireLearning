@@ -17,9 +17,10 @@ const router = createBrowserRouter(
       <Route path='/about' element={<About />} />
       <Route path='/callback' element={<Callback />} />
       <Route path='/dashboard' element={<Dashboard />} />
-      <Route element={<PrivateRoute redirectTo='/' />}>
+      <Route element={<PrivateRoute />}>
         <Route path='/private' element={<div>Private</div>} />
       </Route>
+      <Route path='/403' element={<div>You don't have permission</div>} />
     </Route>
   )
 );

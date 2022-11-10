@@ -1,38 +1,22 @@
-import React, { useContext, createContext, useState } from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  useLocation,
-  redirect,
-  Navigate,
-} from 'react-router-dom';
+import React, { PropsWithChildren } from 'react';
+import { Navigate, Outlet, useLocation } from 'react-router-dom';
 
-const PrivateRoute = ({
-  children,
-  redirectTo,
-}: { children?: JSX.Element } & { redirectTo: string }) => {
-  //   let auth = useAuth();
+export interface PrivateRouteProps {
+  redirectTo: string;
+  forceAllow: boolean;
+}
+
+const PrivateRoute = (
+  props: PropsWithChildren<Partial<PrivateRouteProps>>
+): JSX.Element => {
+  const { redirectTo = '/403', forceAllow = false } = props;
   const location = useLocation();
+
+  if (forceAllow) {
+    return props.children ? <>(props.children)</> : <Outlet />;
+  }
+
   return <Navigate to={redirectTo} state={{ from: location }} replace />;
-  //   return <div>Private</div>;
-  //   return (
-  //     <Route
-  //       {...rest}
-  //       render={({ location }) =>
-  //         auth.user ? (
-  //           children
-  //         ) : (
-  //           <Redirect
-  //             to={{
-  //               pathname: '/login',
-  //               state: { from: location },
-  //             }}
-  //           />
-  //         )
-  //       }
-  //     />
-  //   );
 };
 
 export default PrivateRoute;

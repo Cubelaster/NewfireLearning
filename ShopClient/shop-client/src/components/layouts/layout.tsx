@@ -26,19 +26,13 @@ const AppLayout = () => {
               />
             }
           >
-            <Link to='/'>The best app ever</Link>
-          </Menu.Item>
-          <Menu.Item key={'dashboard'} icon={<DesktopOutlined />}>
-            <Link to='/dashboard'>Dashboard</Link>
-          </Menu.Item>
-          <Menu.Item key={'callback'} icon={<DesktopOutlined />}>
-            <Link to='/callback'>Callback</Link>
-          </Menu.Item>
-          <Menu.Item key={'about'} icon={<DesktopOutlined />}>
-            <Link to='/about'>About</Link>
+            <Link to='/dashboard'>The best app ever</Link>
           </Menu.Item>
           <Menu.Item key={'private'} icon={<LockOutlined />}>
             <Link to='/private'>Private</Link>
+          </Menu.Item>
+          <Menu.Item key={'about'} icon={<DesktopOutlined />}>
+            <Link to='/about'>About</Link>
           </Menu.Item>
         </Menu>
       </Sider>
