@@ -454,3 +454,4 @@ $RECYCLE.BIN/
 !.vscode/extensions.json
 ShopClient/.vscode/
 Identity/keys/
+ShopClient/shop-client/.vscode/
