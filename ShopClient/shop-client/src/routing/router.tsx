@@ -4,7 +4,7 @@ import {
   createRoutesFromElements,
   Route,
 } from 'react-router-dom';
-import ErrorPage from '../components/layouts/errorPage';
+import ErrorPage from '../pages/statusPages/errorPage';
 import AppLayout from '../components/layouts/layout';
 import About from '../pages/about';
 import Callback from '../pages/callback';
@@ -20,6 +20,7 @@ const router = createBrowserRouter(
       <Route element={<PrivateRoute />}>
         <Route path='/private' element={<div>Private</div>} />
       </Route>
+      <Route path='/401' element={<div>You need to login</div>} />
       <Route path='/403' element={<div>You don't have permission</div>} />
     </Route>
   )

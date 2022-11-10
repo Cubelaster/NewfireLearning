@@ -9,7 +9,7 @@ export interface PrivateRouteProps {
 const PrivateRoute = (
   props: PropsWithChildren<Partial<PrivateRouteProps>>
 ): JSX.Element => {
-  const { redirectTo = '/403', forceAllow = false } = props;
+  const { redirectTo = '/401', forceAllow = false } = props;
   const location = useLocation();
 
   if (forceAllow) {

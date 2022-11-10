@@ -5,7 +5,7 @@ export interface AppConfig {
   oidcClientSettings: OidcClientSettings;
 }
 
-const AppConfigContext = React.createContext({} as AppConfig);
+const AppConfigContext = React.createContext<AppConfig>({} as AppConfig);
 
 export const AppConfigContextProvider = (props: PropsWithChildren) => {
   const oidcClientSettings = useMemo(

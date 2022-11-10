@@ -1,20 +1,27 @@
-import { UserManager } from 'oidc-client';
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Spinner from '../components/layouts/spinner/spinner';
+import AuthContext from '../contexts/authContext';
 
 const Callback = () => {
   const navigate = useNavigate();
+  const { setUser, userManager } = useContext(AuthContext);
+
   useEffect(() => {
-    new UserManager({ response_mode: 'query' })
-      .signinRedirectCallback()
-      .then(() => {
-        navigate('/');
-      })
-      .catch((e) => {
-        console.error(e);
-      });
-  }, []);
-  return <h2>Callback</h2>;
+    if (userManager) {
+      userManager
+        .signinRedirectCallback()
+        .then((user) => {
+          setUser(user);
+          navigate('/');
+        })
+        .catch((e) => {
+          console.error(e);
+        });
+    }
+  }, [userManager]);
+
+  return <Spinner tip='Logging you in...' />;
 };
 
 export default Callback;
