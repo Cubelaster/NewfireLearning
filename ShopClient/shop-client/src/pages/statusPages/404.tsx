@@ -2,7 +2,7 @@ import { Button, Result } from 'antd';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const FourOhFour: React.FC = () => (
+export const FourOhFour: React.FC = () => (
   <Result
     status='404'
     title='404'
@@ -14,5 +14,3 @@ const FourOhFour: React.FC = () => (
     }
   />
 );
-
-export default FourOhFour;

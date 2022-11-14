@@ -1,10 +1,11 @@
 import React, { useContext, useEffect } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate, useLocation } from 'react-router-dom';
 import Spinner from '../components/layouts/spinner/spinner';
 import AuthContext from '../contexts/authContext';
 
 const Callback = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { setUser, userManager, originalRoute } = useContext(AuthContext);
 
   useEffect(() => {

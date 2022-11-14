@@ -2,7 +2,9 @@ import { Button, Result } from 'antd';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const ErrorPage: React.FC<Partial<Error> | undefined> = (props = undefined) => {
+export const ErrorPage: React.FC<Partial<Error> | undefined> = (
+  props = undefined
+) => {
   console.log(props);
 
   return (
@@ -18,5 +20,3 @@ const ErrorPage: React.FC<Partial<Error> | undefined> = (props = undefined) => {
     />
   );
 };
-
-export default ErrorPage;

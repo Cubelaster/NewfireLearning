@@ -1,4 +1,10 @@
-import React, { PropsWithChildren, useContext } from 'react';
+import { Skeleton } from 'antd';
+import React, {
+  PropsWithChildren,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
 import AuthContext from '../contexts/authContext';
 
@@ -12,14 +18,45 @@ export interface PrivateRouteProps {
 const PrivateRoute = (
   props: PropsWithChildren<Partial<PrivateRouteProps>>
 ): JSX.Element => {
-  const { redirectTo = '/403', forceAllow = false } = props;
+  const { redirectTo = '/401', forceAllow = false } = props;
   const location = useLocation();
-  const { user } = useContext(AuthContext);
+  const { userManager, user, setUser } = useContext(AuthContext);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isError, setIsError] = useState<boolean>(false);
 
-  if (forceAllow || user) {
-    return props.children ? <>(props.children)</> : <Outlet />;
-  }
-  return <Navigate to={redirectTo} state={{ from: location }} replace />;
+  useEffect(() => {
+    checkUser();
+  }, []);
+
+  const checkUser = async (): Promise<void> => {
+    setIsLoading(true);
+    if (user && user.id_token) {
+      setIsError(false);
+    } else {
+      await userManager
+        ?.getUser()
+        .then((user) => {
+          if (user) {
+            setUser(user);
+            setIsError(false);
+          } else {
+            setIsError(true);
+          }
+        })
+        .catch((e) => {
+          setIsError(true);
+        });
+    }
+    setIsLoading(false);
+  };
+
+  return isLoading ? (
+    <Skeleton />
+  ) : isError ? (
+    <Navigate to={redirectTo} state={{ from: location }} replace />
+  ) : (
+    <Outlet />
+  );
 };
 
 export default PrivateRoute;
