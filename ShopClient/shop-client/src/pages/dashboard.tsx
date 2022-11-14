@@ -19,9 +19,9 @@ const Dashboard = () => {
 
       userManager!.getUser().then((user) => {
         if (user) {
-          console.log('User logged in', user.profile);
+          // console.log('User logged in', user.profile);
         } else {
-          console.log('User not logged in');
+          // console.log('User not logged in');
         }
       });
     }

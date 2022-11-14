@@ -1,12 +1,13 @@
 import { DesktopOutlined, LockOutlined } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 import React, { useState } from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useLocation } from 'react-router-dom';
 import logo from '../../logo.svg';
 const { Header, Content, Footer, Sider } = Layout;
 
-const AppLayout = () => {
+const AppLayout: React.FC = () => {
   const [collapsed, setCollapsed] = useState(false);
+  const location = useLocation();
 
   return (
     <Layout style={{ minHeight: '100vh' }}>
@@ -15,9 +16,14 @@ const AppLayout = () => {
         collapsed={collapsed}
         onCollapse={(value) => setCollapsed(value)}
       >
-        <Menu theme='dark' defaultSelectedKeys={['dashboard']} mode='inline'>
+        <Menu
+          theme='dark'
+          selectedKeys={[location.pathname.split('/')[1] ?? 'dashboard']}
+          defaultSelectedKeys={['dashboard']}
+          mode='inline'
+        >
           <Menu.Item
-            key={'logo'}
+            key={'dashboard'}
             icon={
               <img
                 src={logo}

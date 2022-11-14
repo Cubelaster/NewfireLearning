@@ -1,17 +1,21 @@
+import { Button, Result } from 'antd';
 import React from 'react';
-import { useRouteError } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-const ErrorPage = () => {
-  const error = useRouteError() as { statusText: string; message: string };
+const ErrorPage: React.FC<Partial<Error> | undefined> = (props = undefined) => {
+  console.log(props);
 
   return (
-    <div id='error-page'>
-      <h1>Oops!</h1>
-      <p>Sorry, an unexpected error has occurred.</p>
-      <p>
-        <i>{error.statusText || error.message}</i>
-      </p>
-    </div>
+    <Result
+      status='500'
+      title='500'
+      subTitle='Sorry, something went wrong.'
+      extra={
+        <Button type='primary' key='home'>
+          <Link to='/dashboard'>Home</Link>
+        </Button>
+      }
+    />
   );
 };
 

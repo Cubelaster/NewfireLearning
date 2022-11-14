@@ -2,14 +2,17 @@ import { User, UserManager } from 'oidc-client';
 import React, {
   PropsWithChildren,
   useCallback,
+  useEffect,
   useMemo,
   useState,
 } from 'react';
+import { useLocalStorage } from 'usehooks-ts';
 import AppConfigContext from './appConfigContext';
 
 export interface AuthContextProps {
   user?: User;
   setUser: (user: User) => void;
+  originalRoute?: string;
   userManager?: UserManager;
   login: () => void;
   logout: () => void;
@@ -22,9 +25,13 @@ const AuthContext = React.createContext<AuthContextProps>(
 );
 
 export const AuthContextProvider = (props: PropsWithChildren) => {
-  const [user, setUser] = useState<User | undefined>(undefined);
-
   const appConfigContext = React.useContext(AppConfigContext);
+
+  const [user, setUser] = useState<User | undefined>(undefined);
+  const [originalRoute, setOriginalRoute] = useLocalStorage(
+    'userManager_originalRoute',
+    '/'
+  );
 
   const userManager = useMemo(
     () => new UserManager(appConfigContext.oidcClientSettings),
@@ -51,7 +58,7 @@ export const AuthContextProvider = (props: PropsWithChildren) => {
 
   const logout = useCallback((): void => {
     userManager.signoutRedirect();
-  }, [userManager]);
+  }, [userManager, user]);
 
   const log = (...params: any[]): void => {
     document.getElementById('results')!.innerText = '';
@@ -74,6 +81,7 @@ export const AuthContextProvider = (props: PropsWithChildren) => {
       value={{
         user,
         setUser,
+        originalRoute,
         userManager,
         log,
         login,

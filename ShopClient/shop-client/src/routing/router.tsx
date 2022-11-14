@@ -2,6 +2,7 @@ import React from 'react';
 import {
   createBrowserRouter,
   createRoutesFromElements,
+  Navigate,
   Route,
 } from 'react-router-dom';
 import ErrorPage from '../pages/statusPages/errorPage';
@@ -10,6 +11,8 @@ import About from '../pages/about';
 import Callback from '../pages/callback';
 import Dashboard from '../pages/dashboard';
 import PrivateRoute from './privateRoute';
+import FourOhThree from '../pages/statusPages/403';
+import FourOhFour from '../pages/statusPages/404';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -20,8 +23,9 @@ const router = createBrowserRouter(
       <Route element={<PrivateRoute />}>
         <Route path='/private' element={<div>Private</div>} />
       </Route>
-      <Route path='/401' element={<div>You need to login</div>} />
-      <Route path='/403' element={<div>You don't have permission</div>} />
+      <Route path='/403' element={<FourOhThree />} />
+      <Route path='/404' element={<FourOhFour />} />
+      <Route path='*' element={<Navigate to='/404' />} />
     </Route>
   )
 );
