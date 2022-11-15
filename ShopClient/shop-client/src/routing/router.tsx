@@ -9,13 +9,13 @@ import AppLayout from '../components/layouts/layout';
 import About from '../pages/about';
 import Callback from '../pages/callback';
 import Dashboard from '../pages/dashboard';
-import PrivateRoute from './privateRoute';
 import {
   ErrorPage,
   FourOhFour,
   FourOhOne,
   FourOhThree,
 } from '../pages/statusPages';
+import PrivateRoute from './privateRoute';
 
 const router = createBrowserRouter(
   createRoutesFromElements(

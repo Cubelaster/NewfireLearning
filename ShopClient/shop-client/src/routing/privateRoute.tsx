@@ -13,12 +13,18 @@ import AuthContext from '../contexts/authContext';
 export interface PrivateRouteProps {
   redirectTo: string;
   forceAllow: boolean;
+  forbiddenComponent?: React.ReactElement;
 }
 
 const PrivateRoute = (
   props: PropsWithChildren<Partial<PrivateRouteProps>>
 ): JSX.Element => {
-  const { redirectTo = '/401', forceAllow = false } = props;
+  const {
+    redirectTo = '/401',
+    forceAllow = false,
+    forbiddenComponent: replacementComponent,
+    children,
+  } = props;
   const location = useLocation();
   const { userManager, user, setUser } = useContext(AuthContext);
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -26,7 +32,7 @@ const PrivateRoute = (
 
   useEffect(() => {
     checkUser();
-  }, []);
+  }, [user]);
 
   const checkUser = async (): Promise<void> => {
     setIsLoading(true);
@@ -50,12 +56,24 @@ const PrivateRoute = (
     setIsLoading(false);
   };
 
+  const errorComponent = (): JSX.Element => {
+    return replacementComponent ? (
+      replacementComponent
+    ) : (
+      <Navigate to={redirectTo} state={{ from: location }} replace />
+    );
+  };
+
+  const successComponent = (): JSX.Element => {
+    return children ? (children as any) : <Outlet />;
+  };
+
   return isLoading ? (
     <Skeleton />
   ) : isError ? (
-    <Navigate to={redirectTo} state={{ from: location }} replace />
+    errorComponent()
   ) : (
-    <Outlet />
+    successComponent()
   );
 };
 
