@@ -1,38 +1,80 @@
-import React, { useContext, createContext, useState } from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  useLocation,
-  redirect,
-  Navigate,
-} from 'react-router-dom';
+import { Skeleton } from 'antd';
+import React, {
+  PropsWithChildren,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
+import { Navigate, Outlet, useLocation } from 'react-router-dom';
+import AuthContext from '../contexts/authContext';
 
-const PrivateRoute = ({
-  children,
-  redirectTo,
-}: { children?: JSX.Element } & { redirectTo: string }) => {
-  //   let auth = useAuth();
+// https://www.robinwieruch.de/react-router-private-routes/
+
+export interface PrivateRouteProps {
+  redirectTo: string;
+  forceAllow: boolean;
+  forbiddenComponent?: React.ReactElement;
+}
+
+const PrivateRoute = (
+  props: PropsWithChildren<Partial<PrivateRouteProps>>
+): JSX.Element => {
+  const {
+    redirectTo = '/401',
+    forceAllow = false,
+    forbiddenComponent: replacementComponent,
+    children,
+  } = props;
   const location = useLocation();
-  return <Navigate to={redirectTo} state={{ from: location }} replace />;
-  //   return <div>Private</div>;
-  //   return (
-  //     <Route
-  //       {...rest}
-  //       render={({ location }) =>
-  //         auth.user ? (
-  //           children
-  //         ) : (
-  //           <Redirect
-  //             to={{
-  //               pathname: '/login',
-  //               state: { from: location },
-  //             }}
-  //           />
-  //         )
-  //       }
-  //     />
-  //   );
+  const { userManager, user, setUser } = useContext(AuthContext);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isError, setIsError] = useState<boolean>(false);
+
+  useEffect(() => {
+    checkUser();
+  }, [user]);
+
+  const checkUser = async (): Promise<void> => {
+    setIsLoading(true);
+    if (user && user.id_token) {
+      setIsError(false);
+    } else {
+      await userManager
+        ?.getUser()
+        .then((user) => {
+          if (user) {
+            setUser(user);
+            setIsError(false);
+          } else {
+            setIsError(true);
+          }
+        })
+        .catch((e) => {
+          setIsError(true);
+        });
+    }
+    setIsLoading(false);
+  };
+
+  const errorComponent = (): JSX.Element => {
+    return replacementComponent ? (
+      replacementComponent
+    ) : (
+      <Navigate to={redirectTo} state={{ from: location }} replace />
+    );
+  };
+
+  const successComponent = (): JSX.Element => {
+    return children ? (children as any) : <Outlet />;
+  };
+
+  return isLoading ? (
+    <Skeleton />
+  ) : isError ? (
+    errorComponent()
+  ) : (
+    successComponent()
+  );
 };
 
 export default PrivateRoute;

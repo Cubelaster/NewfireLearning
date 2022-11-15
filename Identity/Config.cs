@@ -95,8 +95,12 @@ namespace Identity
                 ClientId = "react",
                 ClientName = "React Client",
                 AllowedGrantTypes = GrantTypes.Code,
+                RequireClientSecret = true,
+                AlwaysIncludeUserClaimsInIdToken = true,
+                AlwaysSendClientClaims = true,
+                AllowOfflineAccess = true,
 
-                // secret for authentication
+                //// secret for authentication
                 ClientSecrets =
                 {
                     new Secret("secret".Sha256())
@@ -111,6 +115,7 @@ namespace Identity
                     IdentityServerConstants.StandardScopes.OpenId,
                     IdentityServerConstants.StandardScopes.Profile,
                     IdentityServerConstants.StandardScopes.Email,
+                    IdentityServerConstants.StandardScopes.OfflineAccess,
                     "verification",
                     "testscope",
                     // Specific scopes that are a part of resources

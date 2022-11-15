@@ -1,11 +1,11 @@
-import { DesktopOutlined, LockOutlined } from '@ant-design/icons';
-import { Layout, Menu } from 'antd';
+import { Layout } from 'antd';
 import React, { useState } from 'react';
-import { Link, Outlet } from 'react-router-dom';
-import logo from '../../logo.svg';
-const { Header, Content, Footer, Sider } = Layout;
+import { Outlet } from 'react-router-dom';
+import { AppHeader } from './header';
+import { SidebarMenu } from './sidebarMenu';
+const { Content, Footer, Sider } = Layout;
 
-const AppLayout = () => {
+const AppLayout: React.FC = () => {
   const [collapsed, setCollapsed] = useState(false);
 
   return (
@@ -15,35 +15,10 @@ const AppLayout = () => {
         collapsed={collapsed}
         onCollapse={(value) => setCollapsed(value)}
       >
-        <Menu theme='dark' defaultSelectedKeys={['dashboard']} mode='inline'>
-          <Menu.Item
-            key={'logo'}
-            icon={
-              <img
-                src={logo}
-                style={{ height: '16px', width: '16px' }}
-                alt='logo'
-              />
-            }
-          >
-            <Link to='/'>The best app ever</Link>
-          </Menu.Item>
-          <Menu.Item key={'dashboard'} icon={<DesktopOutlined />}>
-            <Link to='/dashboard'>Dashboard</Link>
-          </Menu.Item>
-          <Menu.Item key={'callback'} icon={<DesktopOutlined />}>
-            <Link to='/callback'>Callback</Link>
-          </Menu.Item>
-          <Menu.Item key={'about'} icon={<DesktopOutlined />}>
-            <Link to='/about'>About</Link>
-          </Menu.Item>
-          <Menu.Item key={'private'} icon={<LockOutlined />}>
-            <Link to='/private'>Private</Link>
-          </Menu.Item>
-        </Menu>
+        <SidebarMenu />
       </Sider>
       <Layout>
-        <Header />
+        <AppHeader />
         <Content style={{ margin: '10px' }}>
           <Outlet />
         </Content>
