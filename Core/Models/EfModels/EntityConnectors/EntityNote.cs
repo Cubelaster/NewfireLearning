@@ -1,8 +1,6 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using Core.Enums;
 using Core.Models.EfModels.Base;
-using Core.Models.EfModels.Codebooks;
 using ReFilter.Attributes;
 
 namespace Core.Models.EfModels.EntityConnectors
@@ -16,8 +14,8 @@ namespace Core.Models.EfModels.EntityConnectors
         [Required, StringLength(400)]
         public string Value { get; set; }
 
-        public int NoteTypeId { get; set; }
-        public NoteType NoteType { get; set; }
+        //public int NoteTypeId { get; set; }
+        //public NoteType NoteType { get; set; }
 
         public DateOnly? DateFrom { get; set; }
         public DateOnly? DateTo { get; set; }

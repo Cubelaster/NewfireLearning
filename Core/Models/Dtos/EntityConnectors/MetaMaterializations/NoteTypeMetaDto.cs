@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Core.Enums;
+﻿using Core.Enums;
 
 namespace Core.Models.Dtos.EntityConnectors.MetaMaterializations
 {

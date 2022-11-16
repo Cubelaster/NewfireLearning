@@ -1,8 +1,6 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using Core.Enums;
 using Core.Models.EfModels.Base;
-using Core.Models.EfModels.Codebooks;
 using ReFilter.Attributes;
 
 namespace Core.Models.EfModels.EntityConnectors
@@ -12,8 +10,8 @@ namespace Core.Models.EfModels.EntityConnectors
         public EntityType EntityType { get; set; }
         public int EntityId { get; set; }
 
-        public int ContactTypeId { get; set; }
-        public ContactType ContactType { get; set; }
+        //public int ContactTypeId { get; set; }
+        //public ContactType ContactType { get; set; }
 
         public bool IsPreffered { get; set; }
         [ReFilterProperty(UsedForSearchQuery = true)]

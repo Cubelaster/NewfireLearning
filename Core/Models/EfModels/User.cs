@@ -9,7 +9,7 @@ namespace Core.Models.EfModels
         public DateTime? DateModified { get; set; }
         public DatabaseEntityStatus Status { get; set; }
 
-        public Person UserDetails { get; set; }
+        //public Person UserDetails { get; set; }
 
         public List<UserRoles> UserRoles { get; set; }
         //public List<UserClaim> UserClaims { get; set; }
