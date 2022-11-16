@@ -8,7 +8,7 @@ namespace Workspaces.Infrastructure.EfContext
 {
     public class WorkspacesDbContext : DbContext
     {
-        public WorkspacesDbContext(DbContextOptions dbContextOptions) : base(dbContextOptions) { }
+        public WorkspacesDbContext(DbContextOptions<WorkspacesDbContext> dbContextOptions) : base(dbContextOptions) { }
 
         #region DbSets
 

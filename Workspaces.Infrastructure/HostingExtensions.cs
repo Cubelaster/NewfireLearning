@@ -9,7 +9,7 @@ namespace Workspaces.Infrastructure
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
-            //services.AddHttpContextAccessor();
+            services.AddHttpContextAccessor();
 
             services.AddDbContext<WorkspacesDbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString(nameof(WorkspacesDbContext))));

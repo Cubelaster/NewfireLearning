@@ -1,7 +1,8 @@
 using Workspaces.Api;
 
 var app = WebApplication
-    .CreateBuilder()
+    .CreateBuilder(args)
+    .BuildEnvironment(args)
     .ConfigureServices()
     .Build()
     .ConfigurePipeline();

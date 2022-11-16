@@ -29,7 +29,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Workspaces.Core", "Workspac
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Workspaces.Infrastructure", "Workspaces.Infrastructure\Workspaces.Infrastructure.csproj", "{8AD43B2E-64D4-48A8-8C67-57FEF893399D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workspaces.Application", "Workspaces.Application\Workspaces.Application.csproj", "{2318B2F6-8DD2-40CD-AF41-8466018D6460}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Workspaces.Application", "Workspaces.Application\Workspaces.Application.csproj", "{2318B2F6-8DD2-40CD-AF41-8466018D6460}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
