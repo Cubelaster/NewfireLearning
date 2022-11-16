@@ -1,13 +1,11 @@
-﻿using Core.Enums;
-
-namespace Core.Models.EfModels
+﻿namespace Core.Models.EfModels
 {
     public class User
     //: IdentityUser<Guid>
     {
         public DateTime DateCreated { get; set; }
         public DateTime? DateModified { get; set; }
-        public DatabaseEntityStatus Status { get; set; }
+        public bool IsDeleted { get; set; }
 
         //public Person UserDetails { get; set; }
 

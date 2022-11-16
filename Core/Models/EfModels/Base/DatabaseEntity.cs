@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Core.Enums;
 using ReFilter.Attributes;
 
 namespace Core.Models.EfModels.Base
@@ -19,7 +18,7 @@ namespace Core.Models.EfModels.Base
 
         public DateTime DateCreated { get; set; }
         public DateTime? DateModified { get; set; }
-        public DatabaseEntityStatus IsDeleted { get; set; }
+        public bool IsDeleted { get; set; }
 
         public Guid? CreatedById { get; set; }
         public User CreatedBy { get; set; }

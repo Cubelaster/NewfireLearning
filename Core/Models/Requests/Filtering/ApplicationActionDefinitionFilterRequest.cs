@@ -1,6 +1,4 @@
-﻿using System;
-using Core.Enums;
-using ReFilter.Attributes;
+﻿using ReFilter.Attributes;
 using ReFilter.Models;
 using ReFilter.Models.Filtering.Contracts;
 
@@ -17,7 +15,7 @@ namespace Core.Models.Requests.Filtering
 
         public RangeFilter<DateTime> DateCreated { get; set; }
         public RangeFilter<DateTime> DateModified { get; set; }
-        public DatabaseEntityStatus? IsDeleted { get; set; }
+        public bool? IsDeleted { get; set; }
         [ReFilterProperty(HasSpecialFilter = true, HasSpecialSort = true)]
         public bool? IsActive { get; set; }
 

@@ -1,5 +1,4 @@
-﻿using System;
-using Core.Enums;
+﻿using Core.Enums;
 using Core.Models.ViewModels.Base;
 using Core.Models.ViewModels.User;
 
@@ -18,14 +17,14 @@ namespace Core.Models.ViewModels.ApplicationAction
 
         public DateTime DateCreated { get; set; }
         public DateTime? DateModified { get; set; }
-        public DatabaseEntityStatus IsDeleted { get; set; }
+        public bool IsDeleted { get; set; }
 
         public Guid CreatedById { get; set; }
         public UserBaseViewModel CreatedBy { get; set; }
         public Guid? LastModifiedById { get; set; }
         public UserBaseViewModel LastModifiedBy { get; set; }
 
-        public bool IsActive => IsDeleted == DatabaseEntityStatus.Active;
+        public bool IsActive => !IsDeleted;
 
         public int EntityId => Id;
         public EntityType EntityType => EntityType.ApplicationActionDefinition;
