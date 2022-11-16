@@ -21,8 +21,10 @@ namespace Core.Models.EfModels.Base
         public bool IsDeleted { get; set; }
 
         public Guid? CreatedById { get; set; }
+        [NotMapped]
         public User CreatedBy { get; set; }
         public Guid? LastModifiedById { get; set; }
+        [NotMapped]
         public User LastModifiedBy { get; set; }
     }
 }
