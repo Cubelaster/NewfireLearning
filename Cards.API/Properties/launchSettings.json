@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "Tasks.API": {
+    "Cards.API": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

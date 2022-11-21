@@ -2,7 +2,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System.Reflection;
-using Tasks.API.Data;
+using Cards.API.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,7 +23,7 @@ builder.Configuration
     .AddJsonFile($"appsettings.{env}.json")
     .AddEnvironmentVariables();
 
-builder.Services.AddDbContext<TasksContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString(nameof(TasksContext))));
+builder.Services.AddDbContext<CardsContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString(nameof(CardsContext))));
 
 var app = builder.Build();
 
