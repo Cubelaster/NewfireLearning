@@ -1,6 +1,8 @@
-﻿namespace Cards.API.Models
+﻿using Core.Models.EfModels.Base;
+
+namespace Cards.API.Models
 {
-    public class Card 
+    public class Card : DatabaseEntity<Int32>
     {
         public string Name { get; set; }
         public string Description { get; set; }

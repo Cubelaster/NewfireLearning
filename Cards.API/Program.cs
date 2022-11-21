@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using System.Reflection;
 using Cards.API.Data;
 using Microsoft.EntityFrameworkCore;
+using static Cards.API.Controllers.CardsController;
 
 var builder = WebApplication.CreateBuilder(args);
 
