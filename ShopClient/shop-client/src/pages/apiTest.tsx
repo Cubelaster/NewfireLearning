@@ -1,15 +1,12 @@
 import { Button, message } from 'antd';
 import { AxiosError } from 'axios';
 import React, { useCallback, useContext, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
 import Spinner from '../components/layouts/spinner/spinner';
 import AuthContext from '../contexts/authContext';
 import { WeatherForecast } from '../core/models/WeatherForecast';
 import weatherForecastService from '../core/services/weatherForecastService';
 
 const ApiTest = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [weatherForecast, setWeatherForecast] = useState<
     Array<WeatherForecast> | undefined
