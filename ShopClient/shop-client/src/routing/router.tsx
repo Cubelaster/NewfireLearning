@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 import AppLayout from '../components/layouts/layout';
 import About from '../pages/about';
+import ApiTest from '../pages/apiTest';
 import Callback from '../pages/callback';
 import Dashboard from '../pages/dashboard';
 import {
@@ -24,7 +25,7 @@ const router = createBrowserRouter(
       <Route path='/callback' element={<Callback />} />
       <Route path='/dashboard' element={<Dashboard />} />
       <Route element={<PrivateRoute />}>
-        <Route path='/private' element={<div>Private</div>} />
+        <Route path='/private' element={<ApiTest />} />
       </Route>
       <Route path='/401' element={<FourOhOne />} />
       <Route path='/403' element={<FourOhThree />} />

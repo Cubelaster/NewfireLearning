@@ -27,8 +27,21 @@ namespace Workspaces.Api
 
         public static WebApplicationBuilder ConfigureServices(this WebApplicationBuilder builder)
         {
-            builder.Services.AddCors();
+            builder.Services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(policy =>
+                {
+                    policy
+                        .WithOrigins(builder.Configuration["ReactAppUrl"])
+                        .AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .AllowCredentials()
+                        .SetIsOriginAllowedToAllowWildcardSubdomains();
+                });
+            });
+
             builder.Services.AddControllers();
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
@@ -50,19 +63,6 @@ namespace Workspaces.Api
             //        policy.RequireClaim("scope", "testscope");
             //    });
             //});
-
-            builder.Services.AddCors(options =>
-            {
-                // this defines a CORS policy called "default"
-                options.AddDefaultPolicy(policy =>
-                {
-                    policy.WithOrigins(builder.Configuration["ReactAppUrl"])
-                        .AllowAnyHeader()
-                        .AllowAnyMethod()
-                        .AllowCredentials()
-                        .SetIsOriginAllowedToAllowWildcardSubdomains();
-                });
-            });
 
             builder.Services.AddInfrastructure(builder.Configuration);
 
