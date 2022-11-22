@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Cards.API.Migrations
+namespace Cards.Infrastructure.Migrations
 {
     public partial class Initial : Migration
     {
@@ -29,7 +29,6 @@ namespace Cards.API.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Cards", x => x.Id);
-                    //table.ForeignKey("FK_Boards", x => x.BoardId, "Boards", "Id", onDelete: ReferentialAction.Cascade);
                 });
         }
 

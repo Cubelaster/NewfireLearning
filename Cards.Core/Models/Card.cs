@@ -1,6 +1,6 @@
 ﻿using Core.Models.EfModels.Base;
 
-namespace Cards.API.Models
+namespace Cards.Core.Models
 {
     public class Card : DatabaseEntity<Int32>
     {

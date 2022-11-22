@@ -1,13 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
 
-namespace Cards.API.Data
+namespace Cards.Infrastructure.EfContext
 {
     public class CardsContext : DbContext
     {
         public CardsContext(DbContextOptions options) : base(options)
         {
         }
-        public DbSet<Cards.API.Models.Card> Cards { get; set; }
+        public DbSet<Cards.Core.Models.Card> Cards { get; set; }
     }
 }

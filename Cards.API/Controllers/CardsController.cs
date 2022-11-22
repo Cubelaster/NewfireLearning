@@ -1,7 +1,9 @@
-﻿using Cards.API.Models;
+﻿using Cards.Core.Models;
+using Cards.Infrastructure.EfContext;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+
 
 namespace Cards.API.Controllers
 {
@@ -45,9 +47,9 @@ namespace Cards.API.Controllers
         }
         public class GetCardHandler : IRequestHandler<Query,Card>
         {
-            private Data.CardsContext context;
+            private CardsContext context;
 
-            public GetCardHandler(Data.CardsContext context)
+            public GetCardHandler(CardsContext context)
             {
                 this.context = context;
             }
@@ -60,9 +62,9 @@ namespace Cards.API.Controllers
         }
         public class CreateCardHandler : IRequestHandler<CreateCardCommand,Card>
         {
-            private Data.CardsContext context;
+            private CardsContext context;
 
-            public CreateCardHandler(Data.CardsContext context)
+            public CreateCardHandler(CardsContext context)
             {
                 this.context = context;
             }
