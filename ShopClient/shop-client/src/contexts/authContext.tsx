@@ -16,7 +16,6 @@ export interface AuthContextProps {
   userManager?: UserManager;
   login: () => void;
   logout: () => void;
-  testApi: () => void;
   log: (...params: any[]) => void;
 }
 
@@ -41,20 +40,6 @@ export const AuthContextProvider = (props: PropsWithChildren) => {
   const login = useCallback((): void => {
     userManager.signinRedirect();
   }, [userManager]);
-
-  const testApi = useCallback((): void => {
-    userManager.getUser().then((response) => {
-      const url = 'https://localhost:5002/WeatherForecast';
-
-      const xhr = new XMLHttpRequest();
-      xhr.open('GET', url);
-      xhr.onload = () => {
-        log(xhr.status, JSON.parse(xhr.responseText));
-      };
-      xhr.setRequestHeader('Authorization', `Bearer ${user!.access_token}`);
-      xhr.send();
-    });
-  }, [userManager, user]);
 
   const logout = useCallback((): void => {
     userManager.signoutRedirect();
@@ -86,7 +71,6 @@ export const AuthContextProvider = (props: PropsWithChildren) => {
         log,
         login,
         logout,
-        testApi,
       }}
     >
       {props.children}
