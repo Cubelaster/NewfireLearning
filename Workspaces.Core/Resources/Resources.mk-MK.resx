@@ -1,0 +1,321 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="HtmlTemplateNotFound" xml:space="preserve">
+    <value>Шаблонот со име {0} не е пронајден.</value>
+  </data>
+  <data name="HtmlRendererError" xml:space="preserve">
+    <value>Грешка при креирањето на HTML претходно.</value>
+  </data>
+  <data name="ErrorModifyingCustomerPrices" xml:space="preserve">
+    <value>Грешка при промена на ценовникот на клиентите.</value>
+  </data>
+  <data name="ReportGenerationError" xml:space="preserve">
+    <value>Грешка при генерирање извештај.</value>
+  </data>
+  <data name="ErrorModifyingDocumentItems" xml:space="preserve">
+    <value>Грешка при измена на ставката на документот.</value>
+  </data>
+  <data name="ErrorModifyingDocumentParticipants" xml:space="preserve">
+    <value>Грешка при промена на корисникот на документот.</value>
+  </data>
+  <data name="CriticalError" xml:space="preserve">
+    <value>Настана критична грешка.</value>
+  </data>
+  <data name="DbInitializeError" xml:space="preserve">
+    <value>Грешка при иницијализирање на базата на податоци.</value>
+  </data>
+  <data name="EmailConfirmationFailed" xml:space="preserve">
+    <value>Грешка при потврдување на е-поштата.</value>
+  </data>
+  <data name="EmailConfirmed" xml:space="preserve">
+    <value>Е-поштата е потврдена.</value>
+  </data>
+  <data name="ErrorConfirmingMail" xml:space="preserve">
+    <value>Грешка при потврдување на сметката.</value>
+  </data>
+  <data name="ErrorCreatingPasswordResetToken" xml:space="preserve">
+    <value>Грешка при креирањето на клучот за ресетирање лозинка.</value>
+  </data>
+  <data name="ErrorTryingToFetchUserDetails" xml:space="preserve">
+    <value>Грешка при пребарување на корисничките детали.</value>
+  </data>
+  <data name="ErrorTryingToLogIn" xml:space="preserve">
+    <value>Грешка при најавување на системот.</value>
+  </data>
+  <data name="ErrorWhileRegistering" xml:space="preserve">
+    <value>Грешка при процесот на регистрација. Обидете се повторно или контактирајте со администраторите.</value>
+  </data>
+  <data name="ExternalUserCreationFailed" xml:space="preserve">
+    <value>Грешка при креирањето на надворешен провајдер за најавување.</value>
+  </data>
+  <data name="GoogleUserCreationFailed" xml:space="preserve">
+    <value>Грешка при создавање нов корисник од податоците на Google.</value>
+  </data>
+  <data name="LogInSuccess" xml:space="preserve">
+    <value>Најавата е успешна.</value>
+  </data>
+  <data name="LogOutSuccess" xml:space="preserve">
+    <value>Одјавувањето е успешно.</value>
+  </data>
+  <data name="PasswordReset" xml:space="preserve">
+    <value>Лозинката е успешно ресетирана.</value>
+  </data>
+  <data name="PasswordResetFail" xml:space="preserve">
+    <value>Ресетирањето на лозинката не успеа.</value>
+  </data>
+  <data name="PasswordResetFailTokenInvalid" xml:space="preserve">
+    <value>Ресетирањето на лозинката не успеа затоа што клучот беше неточен.</value>
+  </data>
+  <data name="PleaseContactYourAdministrators" xml:space="preserve">
+    <value>Ве молиме контактирајте со вашиот администратор.</value>
+  </data>
+  <data name="RegistrationSuccess" xml:space="preserve">
+    <value>Новата сметка е успешно регистрирана.</value>
+  </data>
+  <data name="UserAlreadyExists" xml:space="preserve">
+    <value>Таков корисник веќе постои.</value>
+  </data>
+  <data name="UserCreationFailed" xml:space="preserve">
+    <value>Не успеа да се создаде нов корисник.</value>
+  </data>
+  <data name="UserWithSuchMailDoesNotExist" xml:space="preserve">
+    <value>Нема регистриран корисник со ваква е-пошта.</value>
+  </data>
+  <data name="WrongLogInData" xml:space="preserve">
+    <value>Погрешно корисничко име или лозинка.</value>
+  </data>
+  <data name="InsertSuccess" xml:space="preserve">
+    <value>Влезот е успешен.</value>
+  </data>
+  <data name="InsertError" xml:space="preserve">
+    <value>Грешка при внесување.</value>
+  </data>
+  <data name="UpdateSuccess" xml:space="preserve">
+    <value>Ажурирањето е успешно.</value>
+  </data>
+  <data name="UpdateError" xml:space="preserve">
+    <value>Грешка при ажурирањето.</value>
+  </data>
+  <data name="DeleteSuccess" xml:space="preserve">
+    <value>Бришење успешно.</value>
+  </data>
+  <data name="DeleteError" xml:space="preserve">
+    <value>Грешка при бришење.</value>
+  </data>
+  <data name="FetchError" xml:space="preserve">
+    <value>Грешка при преземањето податоци.</value>
+  </data>
+  <data name="UserRegistrationSuccessful" xml:space="preserve">
+    <value>Корисникот е успешно регистриран.</value>
+  </data>
+  <data name="ErrorSendingMail" xml:space="preserve">
+    <value>Грешка при испраќање е-пошта.</value>
+  </data>
+  <data name="UnableToAddUserToRole" xml:space="preserve">
+    <value>Грешка при додавање корисник во улога.</value>
+  </data>
+  <data name="UnableToCreateUser" xml:space="preserve">
+    <value>Грешка при креирањето на корисникот.</value>
+  </data>
+  <data name="FallbackToManual" xml:space="preserve">
+    <value>Ве молиме обидете се повторно.</value>
+  </data>
+  <data name="UserDoesntExist" xml:space="preserve">
+    <value>Нема таков корисник.</value>
+  </data>
+  <data name="NoRefreshTokenAvailable" xml:space="preserve">
+    <value>Нема активно копче за освежување. Не е дозволено дејство.</value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>Успех</value>
+  </data>
+  <data name="UserCreationSuccessful" xml:space="preserve">
+    <value>Успешно креирање на нов корисник.</value>
+  </data>
+  <data name="NoRoleSpecified" xml:space="preserve">
+    <value>Не е дефинирана улога. Изберете барем една улога за корисникот.</value>
+  </data>
+  <data name="NoCompanySpecified" xml:space="preserve">
+    <value>Не е дефинирана компанија. Изберете барем една компанија за корисникот.</value>
+  </data>
+  <data name="MissingClaim" xml:space="preserve">
+    <value>Недостасува правото од типот {0} и типот {1}.</value>
+  </data>
+  <data name="NotAllowed" xml:space="preserve">
+    <value>Немате право на акција.</value>
+  </data>
+  <data name="AccountNotVerified" xml:space="preserve">
+    <value>Сметката не е потврдена. Ве молиме пополнете го процесот на регистрација.</value>
+  </data>
+  <data name="AccountLockedOut" xml:space="preserve">
+    <value>Сметката е привремено заклучена.</value>
+  </data>
+  <data name="LockoutWait" xml:space="preserve">
+    <value>Поставеното време за чекање за повторно вклучување на сметката е 5 минути. Почекајте го поставениот временски период или контактирајте со администраторите за да ви дозволат повторно да се најавите.</value>
+  </data>
+  <data name="ExchangeRateAlreadyExists" xml:space="preserve">
+    <value>Веќе постои курс за такви параметри.</value>
+  </data>
+  <data name="ExchangeRateSyncError" xml:space="preserve">
+    <value>Грешка при преземањето на листите за девизен курс.</value>
+  </data>
+  <data name="ContactAdministrator" xml:space="preserve">
+    <value>Обидете се повторно или контактирајте со вашиот администратор.</value>
+  </data>
+  <data name="NoSuchUserExists" xml:space="preserve">
+    <value>Нема таков корисник.</value>
+  </data>
+  <data name="ErrorModifyingSitePartners" xml:space="preserve">
+    <value>Грешка при промена на поврзаните партнери на бензинската пумпа.</value>
+  </data>
+  <data name="ErrorModifyingPartnerTaxTypes" xml:space="preserve">
+    <value>Грешка при промена на типовите даноци на партнери.</value>
+  </data>
+  <data name="ErrorModifyingPartnerTypes" xml:space="preserve">
+    <value>Грешка при промена на типовите партнери.</value>
+  </data>
+  <data name="ErrorModifyingAddresses" xml:space="preserve">
+    <value>Грешка при промена на адресите.</value>
+  </data>
+  <data name="ErrorModifyingContacts" xml:space="preserve">
+    <value>Грешка при промена на контактите.</value>
+  </data>
+  <data name="PasswordResetRequest" xml:space="preserve">
+    <value>Барање за промена на лозинка</value>
+  </data>
+  <data name="PasswordResetRequestSuccessful" xml:space="preserve">
+    <value>Барањето за промена на лозинката започна успешно. Ве молиме следете ги инструкциите што ги добивте на вашата e-mail адреса.</value>
+  </data>
+  <data name="UserDisabled" xml:space="preserve">
+    <value>Корисникот е оневозможен да се најави.</value>
+  </data>
+  <data name="ErrorModifyingNotes" xml:space="preserve">
+    <value>Грешка при уредување белешки.</value>
+  </data>
+  <data name="ErrorModifyingExternalCodes" xml:space="preserve">
+    <value>Грешка при измена на надворешните кодови.</value>
+  </data>
+  <data name="ErrorModifyingCurrencies" xml:space="preserve">
+    <value>Грешка при промена на доделените валути.</value>
+  </data>
+  <data name="ErrorInSignalR" xml:space="preserve">
+    <value>Грешка при работењето на ставките SignalR.</value>
+  </data>
+</root>

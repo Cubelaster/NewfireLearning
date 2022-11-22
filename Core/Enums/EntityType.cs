@@ -9,6 +9,8 @@
         Company = 4,
         User = 5,
 
+        Workspace = 6,
+
         #region Codebooks
 
         #endregion Codebooks
