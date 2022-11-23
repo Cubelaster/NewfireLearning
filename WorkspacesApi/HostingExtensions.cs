@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.OpenApi.Models;
+using Workspaces.Application.SignalR;
 using Workspaces.Core;
 using Workspaces.Infrastructure;
 
@@ -195,6 +196,8 @@ namespace Workspaces.Api
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                var signalRSettings = app.Configuration.GetSection(nameof(SignalRSettings)).Get<SignalRSettings>();
+                endpoints.MapHub<ChangeNotifierHub>(signalRSettings.ChangeNotifierHub);
             });
 
             return app;

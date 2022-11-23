@@ -4,7 +4,7 @@ using Core.Repository.Base;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Newtonsoft.Json;
-using Workspaces.Core.Services.Contracts;
+using Workspaces.Core.Services.Contracts.Utility;
 using Workspaces.Infrastructure.EfContext;
 using Workspaces.Infrastructure.Repository.Base;
 using Workspaces.Infrastructure.Repository.UnitOfWork;

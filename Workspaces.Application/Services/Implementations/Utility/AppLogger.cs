@@ -1,11 +1,11 @@
 ﻿using System.Runtime.CompilerServices;
 using System.Text;
-using Core.Services.Contracts;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using ReActionResponse.Core;
+using Workspaces.Core.Services.Contracts.Utility;
 
-namespace Workspaces.Application.Services.Implementations
+namespace Workspaces.Application.Services.Implementations.Utility
 {
     internal class AppLogger : IAppLogger
     {

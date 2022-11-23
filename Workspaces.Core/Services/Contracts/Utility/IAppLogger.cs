@@ -1,7 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 using ReActionResponse.Core;
 
-namespace Core.Services.Contracts
+namespace Workspaces.Core.Services.Contracts.Utility
 {
     public interface IAppLogger
     {

@@ -2,7 +2,7 @@
 using Core.Models.Requests.SignalR;
 using ReActionResponse.Core;
 
-namespace Workspaces.Core.Services.Contracts;
+namespace Workspaces.Core.Services.Contracts.SignalR;
 
 public interface IChangeNotifierService
 {

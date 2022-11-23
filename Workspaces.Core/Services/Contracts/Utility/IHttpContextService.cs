@@ -1,6 +1,6 @@
 ﻿using System.Security.Claims;
 
-namespace Workspaces.Core.Services.Contracts;
+namespace Workspaces.Core.Services.Contracts.Utility;
 
 public interface IHttpContextService
 {

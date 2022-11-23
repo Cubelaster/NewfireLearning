@@ -1,7 +1,7 @@
 ﻿using Core.Models.EfModels.Base;
 using ReActionResponse.Core;
 
-namespace Workspaces.Core.Services.Contracts
+namespace Workspaces.Core.Services.Contracts.Utility
 {
     public interface IValidationService
     {

@@ -5,19 +5,22 @@ using Core.Models.EfModels.Base;
 using Core.Models.Requests.Base;
 using Core.Models.ViewModels.Base;
 using Core.Repository.Utility;
+using Core.Resources;
+using Microsoft.Extensions.Localization;
 using ReActionResponse.Core;
 using ReFilter.Models;
 using ReFilter.ReFilterActions;
+using Workspaces.Core.Services.Contracts.Utility;
 using Workspaces.Infrastructure.Repository.UnitOfWork;
 
-namespace Workspaces.Core.Services.Base;
+namespace Workspaces.Application.Services.Base;
 
 public interface IServiceBase
 {
     IUnitOfWork UnitOfWork { get; }
     IMapper Mapper { get; }
-    //IStringLocalizer<Resources> StringLocalizer { get; }
-    //IOcsLogger Logger { get; }
+    IStringLocalizer<Resources> StringLocalizer { get; }
+    IAppLogger Logger { get; }
     IReFilterActions ReFilterActions { get; }
     public EntityType EntityType { get; set; }
     Func<DatabaseEntity, ActionResponse> ValidateFunction { get; set; }
