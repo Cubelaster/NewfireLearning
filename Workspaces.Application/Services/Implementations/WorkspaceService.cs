@@ -14,7 +14,7 @@ using Workspaces.Core.Services.Contracts;
 
 namespace Workspaces.Application.Services.Implementations
 {
-    internal class WorkspaceService : IWorkspaceService
+    public class WorkspaceService : IWorkspaceService
     {
         #region Ctors and Members
 

@@ -23,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utilities", "Utilities\Util
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Workspaces.Api", "WorkspacesApi\Workspaces.Api.csproj", "{48545C87-F5EA-455F-B805-DA47014751F0}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Workspaces", "Workspaces", "{3D2AB679-E3F8-44C5-B453-297DFA3AC4EE}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Workspace", "Workspace", "{3D2AB679-E3F8-44C5-B453-297DFA3AC4EE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Workspaces.Core", "Workspaces.Core\Workspaces.Core.csproj", "{CCF877EE-3340-42BB-A108-499B1E03EE2F}"
 EndProject

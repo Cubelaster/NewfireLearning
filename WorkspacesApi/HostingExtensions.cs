@@ -6,8 +6,11 @@ using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.OpenApi.Models;
+using Workspaces.Api.Filters;
+using Workspaces.Application;
 using Workspaces.Application.SignalR;
 using Workspaces.Core;
+using Workspaces.Core.Models.EfModels;
 using Workspaces.Infrastructure;
 
 namespace Workspaces.Api
@@ -49,6 +52,7 @@ namespace Workspaces.Api
             });
 
             builder.Services.AddControllers();
+                //.AddControllersAsServices();
 
             builder.Services.AddApiVersioning(config =>
             {
@@ -62,40 +66,59 @@ namespace Workspaces.Api
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen(c =>
+            builder.Services.AddSwaggerGen(options =>
             {
-                c.SwaggerDoc(builder.Configuration.GetValue<string>("Swagger:Name"),
+                options.SwaggerDoc(builder.Configuration.GetValue<string>("Swagger:Name"),
                     builder.Configuration.GetSection("Swagger:OpenApiOptions").Get<OpenApiInfo>());
 
-                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                //c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                //{
+                //    Description = @"JWT Authorization header using the Bearer scheme. \r\n\r\n 
+                //      Enter 'Bearer' [space] and then your token in the text input below.
+                //      \r\n\r\nExample: 'Bearer 12345abcdef'",
+                //    Name = "Authorization",
+                //    In = ParameterLocation.Header,
+                //    Type = SecuritySchemeType.ApiKey,
+                //    Scheme = "Bearer"
+                //});
+
+                //    c.AddSecurityRequirement(new OpenApiSecurityRequirement()
+                //      {
+                //        {
+                //          new OpenApiSecurityScheme
+                //          {
+                //            Reference = new OpenApiReference
+                //              {
+                //                Type = ReferenceType.SecurityScheme,
+                //                Id = "Bearer"
+                //              },
+                //              Scheme = "oauth2",
+                //              Name = "Bearer",
+                //              In = ParameterLocation.Header,
+
+                //            },
+                //            new List<string>()
+                //          }
+                //        });
+
+                options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
                 {
-                    Description = @"JWT Authorization header using the Bearer scheme. \r\n\r\n 
-                      Enter 'Bearer' [space] and then your token in the text input below.
-                      \r\n\r\nExample: 'Bearer 12345abcdef'",
-                    Name = "Authorization",
-                    In = ParameterLocation.Header,
-                    Type = SecuritySchemeType.ApiKey,
-                    Scheme = "Bearer"
+                    Type = SecuritySchemeType.OAuth2,
+                    Flows = new OpenApiOAuthFlows
+                    {
+                        AuthorizationCode = new OpenApiOAuthFlow
+                        {
+                            AuthorizationUrl = new Uri(builder.Configuration["IdentityUrl"] + "/connect/authorize"),
+                            TokenUrl = new Uri(builder.Configuration["IdentityUrl"] + "/connect/token"),
+                            Scopes = new Dictionary<string, string>
+                            {
+                                { "workspace.read", "workspace.write" }
+                            }
+                        }
+                    }
                 });
 
-                c.AddSecurityRequirement(new OpenApiSecurityRequirement()
-                  {
-                    {
-                      new OpenApiSecurityScheme
-                      {
-                        Reference = new OpenApiReference
-                          {
-                            Type = ReferenceType.SecurityScheme,
-                            Id = "Bearer"
-                          },
-                          Scheme = "oauth2",
-                          Name = "Bearer",
-                          In = ParameterLocation.Header,
-
-                        },
-                        new List<string>()
-                      }
-                    });
+                options.OperationFilter<AuthorizeCheckOperationFilter>();
             });
 
             builder
@@ -122,7 +145,8 @@ namespace Workspaces.Api
 
             builder.Services
                 .AddCore(builder.Configuration)
-                .AddInfrastructure(builder.Configuration);
+                .AddInfrastructure(builder.Configuration)
+                .AddApplication(builder.Configuration);
 
             return builder;
         }
@@ -179,6 +203,9 @@ namespace Workspaces.Api
                 app.UseSwaggerUI(options =>
                 {
                     options.SwaggerEndpoint(swaggerOptions.Endpoint, swaggerOptions.Name);
+                    options.OAuthClientId(swaggerOptions.OAuthClientId);
+                    options.OAuthAppName(swaggerOptions.OAuthAppName);
+                    options.OAuthUsePkce();
                 });
             }
 

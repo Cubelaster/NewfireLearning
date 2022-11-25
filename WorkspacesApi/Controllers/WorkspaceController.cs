@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using ReActionResponse.Api;
 using ReActionResponse.Core;
 using ReFilter.Models;
+using Workspaces.Application.Services.Base;
 using Workspaces.Core.Models.Requests.Workspace;
 using Workspaces.Core.Models.ViewModels.Workspace;
 using Workspaces.Core.Services.Contracts;

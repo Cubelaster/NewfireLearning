@@ -1,5 +1,4 @@
-﻿using System;
-using Duende.IdentityServer;
+﻿using Duende.IdentityServer;
 using Duende.IdentityServer.Models;
 using IdentityModel;
 
@@ -35,6 +34,10 @@ namespace Identity
             {
                 Description = "Scope used for testing purposes"
             },
+
+            new ApiScope(name: "workspace.read", displayName: "Reads your workspaces"),
+            new ApiScope(name: "workspace.write", displayName: "Writes your workspaces"),
+
             // invoice API specific scopes
             new ApiScope(name: "invoice.read",   displayName: "Reads your invoices."),
             new ApiScope(name: "invoice.pay",    displayName: "Pays your invoices."),
@@ -66,6 +69,10 @@ namespace Identity
             new ApiResource("article", "Article API")
             {
                 Scopes = { "article.read", "article.write" }
+            },
+            new ApiResource("workspace", "Workspace.Api")
+            {
+                Scopes = { "workspace.read", "workspace.write" }
             }
         };
 
@@ -87,6 +94,25 @@ namespace Identity
 
                 // scopes that client has access to
                 AllowedScopes = { "testscope" }
+            },
+
+            new Client
+            {
+                ClientId = "Workspace.Api",
+                ClientName = "Workspace.Api",
+
+                // no interactive user, use the clientid/secret for authentication
+                AllowedGrantTypes = GrantTypes.Code,
+                RequirePkce = true,
+                RequireClientSecret = false,
+                ClientSecrets =
+                {
+                    new Secret("secret".Sha256())
+                },
+
+                RedirectUris = {"https://localhost:5002/swagger/oauth2-redirect.html"},
+                AllowedCorsOrigins = {"https://localhost:5002"},
+                AllowedScopes = { "workspace.read", "workspace.write" }
             },
 
             // React Client
@@ -120,7 +146,9 @@ namespace Identity
                     "testscope",
                     // Specific scopes that are a part of resources
                     "article.read",
-                    "article.write"
+                    "article.write",
+                    "workspace.read",
+                    "workspace.write"
                 }
             }
         };

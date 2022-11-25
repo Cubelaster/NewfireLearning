@@ -14,6 +14,8 @@ namespace Workspaces.Infrastructure
             services.AddDbContext<WorkspacesDbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString(nameof(WorkspacesDbContext))));
 
+            services.AddMemoryCache();
+
             return services;
         }
     }
