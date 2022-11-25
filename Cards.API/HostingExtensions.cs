@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Cards.Infrastructure;
 using MediatR;
+using Cards.Infrastructure.EfContext;
+using Microsoft.EntityFrameworkCore;
 
 namespace Cards.Api
 {
@@ -91,6 +93,18 @@ namespace Cards.Api
             {
                 endpoints.MapControllers();
             });
+
+
+            using (var scope = app.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+
+                var context = services.GetRequiredService<CardsContext>();
+                if (context.Database.GetPendingMigrations().Any())
+                {
+                    context.Database.Migrate();
+                }
+            }
 
             return app;
         }
